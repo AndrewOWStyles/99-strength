@@ -9,7 +9,7 @@ const NavLinkStyle = ({ to, children }) => {
     <div className="p-2">
       <motion.div 
       whileHover={{ scale:1.2 }}
-      whileTap={{ scale: 1.0 }}>
+      whileTap={{ scale: 1.2 }}>
         <NavLink
           to={to}
           end
