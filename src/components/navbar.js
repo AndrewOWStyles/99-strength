@@ -1,50 +1,36 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { motion } from 'framer-motion';
+
+const NavLinkStyle = ({ to, children }) => {
+  const navLinkClasses = 'nav-link font-semibold hover:text-slate-400';
+
+  return (
+    <div className="p-2">
+      <motion.div 
+      whileHover={{ scale:1.2 }}
+      whileTap={{ scale: 1.0 }}>
+        <NavLink
+          to={to}
+          end
+          className={({ isActive }) => (isActive ? `active ${navLinkClasses}` : navLinkClasses)}
+        >
+          {children}
+        </NavLink>
+      </motion.div>
+    </div>
+  );
+};
 
 const NavBar = () => {
-
-    const navLinkClasses = 'nav-link font-semibold hover:text-slate-400';
-
-    return (
-        <div className="w-full h-14 flex flex-row items-center justify-around bg-slate-600  ">
-            <div className='p-2'>
-                <NavLink
-                    to="/"
-                    end
-                    className={({ isActive }) => (isActive ? `active ${navLinkClasses}` : navLinkClasses)}
-                >
-                Home
-                </NavLink>
-            </div>
-            <div className='p-2'>
-                <NavLink 
-                to="History"
-                end
-                className={({ isActive }) => (isActive ? `active ${navLinkClasses}` : navLinkClasses)}
-                >
-                History
-                </NavLink>
-            </div>
-            <div className='p-2'>
-                <NavLink 
-                to="Workouts"
-                end
-                className={({ isActive }) => (isActive ? `active ${navLinkClasses}` : navLinkClasses)}
-                >
-                Workouts
-                </NavLink>
-            </div>
-            <div className='p-2 rounded-md'>
-            <NavLink 
-                to="Exercises"
-                end
-                className={({ isActive }) => (isActive ? `active ${navLinkClasses}` : navLinkClasses)}
-                >
-                Exercises
-                </NavLink>
-            </div>
-        </div>
-    );
+  return (
+    <div className="w-full h-14 flex flex-row items-center justify-around bg-slate-600  ">
+      <NavLinkStyle to="/">Home</NavLinkStyle>
+      <NavLinkStyle to="History">History</NavLinkStyle>
+      <NavLinkStyle to="Workouts">Workouts</NavLinkStyle>
+      <NavLinkStyle to="Exercises">Exercises</NavLinkStyle>
+    </div>
+  );
 };
 
 export default NavBar;
