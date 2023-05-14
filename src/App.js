@@ -7,7 +7,7 @@ import PageRoutes from './components/PageRoutes';
 function App() {
   return (
     <Router>
-      <div className="w-screen h-screen bg-slate-800">
+      <div className="w-screen h-screen bg-slate-800 text-slate-500">
         <PageRoutes />
         <div className='w-screen fixed bottom-0 left-0 right-0'>
           <NavBar />

@@ -1,12 +1,20 @@
 import React from 'react';
+import ExerciseList from '../exercises/exercisesList';
 
 const Exercises = () => {
 
-
+    const alphabeticalSort = ExerciseList.slice().sort((a, b) => a.name.localeCompare(b.name))
+    
 
     return (
-        <div className="bg-orange-500 text-blue-700">
-            Exercises page
+        <div className="">
+            <div>
+                {alphabeticalSort.map((exercise, index) => (
+                <div key={index}>
+                <h2>{exercise.name}</h2>
+                </div>
+                ))}
+            </div>
         </div>
     );
 };
