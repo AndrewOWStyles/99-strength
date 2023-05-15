@@ -6,12 +6,10 @@
 a {
     -webkit-tap-highlight-color: transparent;
     tap-highlight-color: transparent;
+
   }
-  button {
-    /* Other button styles */
-    outline: none;
-  }
+button {
+  -webkit-tap-highlight-color: transparent;
+  tap-highlight-color: transparent;
+}
   
-  button:focus {
-    outline: none;
-  }
