@@ -7,3 +7,11 @@ a {
     -webkit-tap-highlight-color: transparent;
     tap-highlight-color: transparent;
   }
+  button {
+    /* Other button styles */
+    outline: none;
+  }
+  
+  button:focus {
+    outline: none;
+  }
