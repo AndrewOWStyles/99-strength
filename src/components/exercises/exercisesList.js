@@ -59,6 +59,11 @@ const Exercises = [
         muscleGroup: 'Shoulders',
         Description: ''
     },
+    {
+        name: 'Barbell Squats',
+        muscleGroup: 'Legs',
+        Description: ''
+    },
 ]
 
 export default Exercises
