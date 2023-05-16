@@ -22,24 +22,33 @@ const Exercises = () => {
         {alphabeticalSort.map((exercise, index) => (
           <div className='p-1 m-1' key={index}>
             <motion.button
-                whileHover={{
+              whileHover={{
                 scale: 1.1,
                 transition: { duration: 0.5 }
-                }}
-                whileTap={{ scale: 1.1 }}
-                className='w-full h-14 border-b-2 border-b-slate-300 pl-2 pr-2 rounded-lg shadow-lg bg-gradient-to-b from-slate-800 to-slate-900'
-                onClick={() => handleExerciseClick(exercise)}
-                >
+              }}
+              whileTap={{ scale: 1.1 }}
+              className='w-full h-14 border-b-2 border-b-slate-300 pl-2 pr-2 rounded-lg shadow-lg bg-gradient-to-b from-slate-800 to-slate-900'
+              onClick={() => handleExerciseClick(exercise)}
+            >
               {exercise.name}
             </motion.button>
           </div>
         ))}
       </div>
       {selectedExercise && (
-        <div className="flex justify-center absolute top-1/3 left-1/5 bg-white p-4 shadow-lg w-5/6 rounded-xl">
-          <ExerciseInfo exercise={selectedExercise} />
-          <button className='absolute top-0 right-3 text-3xl' onClick={handleCloseExercise}>X</button>
-        </div>
+        <motion.div
+        className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 z-1"
+        onClick={handleCloseExercise}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+          <div className="flex justify-center p-4 shadow-lg w-5/6 rounded-xl bg-slate-800 border-solid border-2">
+            <ExerciseInfo exercise={selectedExercise} />
+            <button className='absolute top-0 right-3 text-3xl' onClick={handleCloseExercise}></button>
+          </div>
+        </motion.div>
       )}
     </div>
   );

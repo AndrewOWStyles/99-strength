@@ -6,6 +6,7 @@ const ExerciseInfo = ({ exercise }) => {
       <p>Name: {exercise.name}</p>
       <p>Muscle Group: {exercise.muscleGroup}</p>
       <p>Equipment: {exercise.equipment}</p>
+      <p>Description: {exercise.description}</p>
     </div>
   );
 };
