@@ -1,23 +1,48 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import ExerciseList from '../exercises/exercisesList';
+import ExerciseInfo from '../exercises/exerciseInfo';
 
 const Exercises = () => {
+  const alphabeticalSort = ExerciseList.slice().sort((a, b) => a.name.localeCompare(b.name));
+  const [selectedExercise, setSelectedExercise] = useState(null);
 
-    const alphabeticalSort = ExerciseList.slice().sort((a, b) => a.name.localeCompare(b.name))
-    
+  const handleExerciseClick = (exercise) => {
+    setSelectedExercise(exercise);
+  };
 
-    return (
-        <div className="w-screen h-full mx-auto grid justify-items-center" style={{ gridTemplateRows: '10% 90%' }}>
-            <div className='p-4'>search bar and filter buttons</div>
-            <div className='overflow-auto w-3/4'>
-                {alphabeticalSort.map((exercise, index) => (
-                <div className='p-1 m-1' key={index}>
-                <button className='w-full h-14 border-b-2 border-b-slate-300 pl-2 pr-2 rounded-lg shadow-lg bg-gradient-to-b from-slate-800 to-slate-900'>{exercise.name}</button>
-                </div>
-                ))}
-            </div>
+  const handleCloseExercise = () => {
+    setSelectedExercise(null);
+  };
+
+  return (
+    <div className="w-screen h-full mx-auto grid justify-items-center" style={{ gridTemplateRows: '10% 90%' }}>
+      <div className='p-4'>search bar and filter buttons</div>
+      <div className='overflow-auto w-3/4'>
+        {alphabeticalSort.map((exercise, index) => (
+          <div className='p-1 m-1' key={index}>
+            <motion.button
+                whileHover={{
+                scale: 1.1,
+                transition: { duration: 0.5 }
+                }}
+                whileTap={{ scale: 1.1 }}
+                className='w-full h-14 border-b-2 border-b-slate-300 pl-2 pr-2 rounded-lg shadow-lg bg-gradient-to-b from-slate-800 to-slate-900'
+                onClick={() => handleExerciseClick(exercise)}
+                >
+              {exercise.name}
+            </motion.button>
+          </div>
+        ))}
+      </div>
+      {selectedExercise && (
+        <div className="flex justify-center absolute top-1/3 left-1/5 bg-white p-4 shadow-lg w-5/6 rounded-xl">
+          <ExerciseInfo exercise={selectedExercise} />
+          <button className='absolute top-0 right-3 text-3xl' onClick={handleCloseExercise}>X</button>
         </div>
-    );
+      )}
+    </div>
+  );
 };
 
 export default Exercises;

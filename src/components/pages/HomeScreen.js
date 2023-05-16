@@ -1,8 +1,4 @@
-import React from 'react';
-
 const HomeScreen = () => {
-
-
 
     return (
         <div className="w-3/4 h-full mx-auto grid justify-items-center items-center" style={{ gridTemplateRows: '10% 60% 20%' }}>
