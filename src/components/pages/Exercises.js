@@ -7,11 +7,11 @@ const Exercises = () => {
   const alphabeticalSort = ExerciseList.slice().sort((a, b) => a.name.localeCompare(b.name));
   const [selectedExercise, setSelectedExercise] = useState(null);
 
-  const handleExerciseClick = (exercise) => {
+  const handleExerciseOpen = (exercise) => {
     setSelectedExercise(exercise);
   };
 
-  const handleCloseExercise = () => {
+  const handleExerciseClose = () => {
     setSelectedExercise(null);
   };
 
@@ -28,7 +28,7 @@ const Exercises = () => {
               }}
               whileTap={{ scale: 1.1 }}
               className='w-full h-14 border-b-2 border-b-slate-300 pl-2 pr-2 rounded-lg shadow-lg bg-gradient-to-b from-slate-800 to-slate-900'
-              onClick={() => handleExerciseClick(exercise)}
+              onClick={() => handleExerciseOpen(exercise)}
             >
               {exercise.name}
             </motion.button>
@@ -38,7 +38,7 @@ const Exercises = () => {
       {selectedExercise && (
         <motion.div
         className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 z-1"
-        onClick={handleCloseExercise}
+        onClick={handleExerciseClose}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
@@ -46,7 +46,7 @@ const Exercises = () => {
       >
           <div className="flex justify-center p-4 shadow-lg w-5/6 rounded-xl bg-slate-800 border-solid border-2">
             <ExerciseInfo exercise={selectedExercise} />
-            <button className='absolute top-0 right-3 text-3xl' onClick={handleCloseExercise}></button>
+            <button className='absolute top-0 right-3 text-3xl' onClick={handleExerciseClose}></button>
           </div>
         </motion.div>
       )}
